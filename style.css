@@ -1,0 +1,380 @@
+/* 1. Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background: #fffafa; /* Snow White ke saath halki pink vibe */
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Timer khatam hone par background control */
+body.timer-finished {
+    /* Left (Pink) - Middle (White) - Right (Pink) look Radial Gradient se */
+background: radial-gradient(circle at center, #f1c6c6 15%, #f1c6c6 75%);
+}
+
+/* --- Floating Hearts (Left and Right) --- */
+body::before, body::after {
+    content: "❤️";
+    position: absolute;
+    bottom: -10%;
+    font-size: 25px;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+body::before {
+    left: 10%;
+    animation: floatUp 7s infinite linear;
+}
+
+body::after {
+    right: 10%;
+    animation: floatUp 9s infinite linear;
+    animation-delay: 2s; /* Right wala thoda late shuru hoga */
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+/* --- Containers --- */
+section {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s ease;
+}
+
+section.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.content {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 30px;
+    border: 3px solid #f8bbd0;
+    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
+    width: 90%;
+    max-width: 380px;
+    z-index: 10;
+}
+
+/* --- Headings --- */
+.title, .hb-text, .section-title {
+    font-family: 'Pacifico', cursive;
+    color: #ff4081;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 0px #fff;
+}
+
+/* --- Photo Grid with 2 Sec Delay --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+    opacity: 0; /* Shuru mein gayab */
+    transform: translateY(30px); /* Niche se aane ke liye */
+}
+
+/* Jab section active ho, toh 1.5s baad grid dikhe */
+section.active .grid-container {
+    animation: showGrid 1s ease forwards;
+    animation-delay: 1.5s; 
+}
+
+@keyframes showGrid {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    height: 130px;
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card.is-flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    border: 2px solid #f8bbd0;
+    background: white; /* Background color fix */
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; /* Taki image dikhe */
+}
+
+.card-back {
+    background: #fff9c4;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1rem;
+}
+
+/* --- Buttons & Timer (Same as before) --- */
+/* Timer ko ek line mein laane ke liye */
+#timer {
+    display: flex;
+    flex-direction: row; /* Force single line */
+    justify-content: space-evenly; /* Brabar gap ke liye */
+    align-items: center;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.time-box {
+    background: linear-gradient(45deg, #ff80ab, #f48fb1);
+    color: white;
+    padding: 8px 5px; /* Upar neeche 8px, side mein 5px */
+    border-radius: 12px;
+    flex: 1; /* Saare boxes brabar jagah lenge */
+    margin: 0 4px; /* Boxes ke beech ka gap */
+    min-width: 60px; /* Chote mobile par bhi theek dikhega */
+    box-shadow: 0 4px 10px rgba(255, 128, 171, 0.3);
+}
+
+.time-box span {
+    font-size: 1.2rem; /* Numbers thode chote kiye taaki line mein fit aayein */
+    font-weight: bold;
+    display: block;
+}
+
+.time-box p {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 25px;
+    border-radius: 50px;
+    border: none;
+    background: #ff4081;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.next-btn {
+    opacity: 0;
+    animation: showGrid 0.5s ease forwards;
+    animation-delay: 2.5s; /* Photos ke baad aayega */
+}
+
+.hidden { display: none; }
+
+
+/* Diary/Notebook Style Section */
+.note-paper {
+    background: #fff;
+    background-image: linear-gradient(#e1e1e1 1px, transparent 1px); /* Notebook ki lines */
+    background-size: 100% 1.5rem; /* Lines ke beech ka gap */
+    line-height: 1.5rem;
+    padding: 30px 20px 30px 45px; /* Left mein margin ke liye jagah chhodi hai */
+    position: relative;
+    border: 1px solid #ddd;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
+    border-radius: 5px;
+    text-align: left;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    color: #333;
+    min-height: 200px;
+}
+
+/* Diary ki wo Red Margin line */
+.note-paper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 35px; /* Red line ki position */
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.2); /* Halka red margin */
+}
+
+/* Notebook ke holes (optional - cool dikhne ke liye) */
+.note-paper::after {
+    content: "• • • • • • • •";
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    writing-mode: vertical-rl;
+    color: #aaa;
+    font-size: 1.5rem;
+    letter-spacing: 12px;
+}
+
+/* Options Container */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* Stylish Quiz Buttons */
+.options button {
+    background: #fff;
+    color: #ff4081;
+    border: 2px solid #ff80ab;
+    padding: 12px 15px;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%; /* Full width in container */
+    margin: 0; /* Reset margins */
+    box-shadow: 0 4px 6px rgba(255, 128, 171, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover Effect - Buttons chamkeinge */
+.options button:hover {
+    background: #ff80ab;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(255, 64, 129, 0.3);
+}
+
+/* Click/Active Effect */
+.options button:active {
+    transform: scale(0.95);
+}
+
+/* Msg Box Styling (Right/Wrong answer message) */
+.msg-box {
+    margin-top: 10px;
+    font-size: 1rem; /* Size thoda chota kiya */
+    font-weight: bold;
+    min-height: 20px; /* Space reserve rakhega */
+    font-family: 'Pacifico', cursive;
+    display: block; /* Taki niche space le */
+    word-wrap: break-word; /* Agar text bada ho toh line change karle */
+}
+
+.btn-pink1 {
+    margin-right: 10px;
+}
+
+
+
+
+/* style.css ke end mein paste karein */
+
+/* 1. Full section configuration */
+#section-final {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    overflow: hidden; /* Scrollbars ko rokne ke liye */
+}
+
+/* 2. Container to wrap photo and text */
+.final-container {
+    width: 90%;
+    max-width: 380px;
+    height: 90vh;
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px; /* Purana round border retained */
+}
+
+/* 3. The background photo itself */
+.final-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1; /* Photo ko niche rakhein */
+}
+
+/* 4. Text container overlaying the photo */
+.text-overlay {
+    position: absolute;
+    top: 50%; /* Text ko center mein lane ke liye */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    z-index: 10; /* Text ko photo ke upar rakhein */
+}
+
+/* 5. Typography */
+.title-font {
+    font-family: 'Pacifico', cursive; /* Purana cursive look retained */
+}
+
+.final-text {
+    font-size: 2.2rem;
+    line-height: 1.4;
+    color: #ffffff; /* White color for contrast */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Depth ke liye shadow */
+    margin-bottom: 10px;
+}
+
+.final-subtext {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    color: #fff1f1; /* Soft white/pink color */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Subtle depth */
+}

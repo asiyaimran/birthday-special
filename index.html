@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For someone special| Happy Birthday</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="section-countdown" class="active">
+        <div class="content">
+            <h1 id="countdown-title" class="title">Countdown starts...</h1>
+            <div id="timer">
+                <div class="time-box"><span id="days">00</span><p>Days</p></div>
+                <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
+                <div class="time-box"><span id="mins">00</span><p>Mins</p></div>
+                <div class="time-box"><span id="secs">00</span><p>Secs</p></div>
+            </div>
+            <button id="open-btn" class="btn-gold" onclick="checkDate()">Open Surprise ✨</button>
+        </div>
+    </section>
+
+    <section id="section-wait">
+        <div class="content">
+            <h2 class="hb-text">Thoda sabar karo! ✋</h2>
+            <p style="margin-bottom:20px;">Abhi surprise ka sahi waqt nahi aaya hai. Wait for 14 may!</p>
+            <button class="btn-pink" onclick="nextSection('section-countdown')">⬅️ Back</button>
+        </div>
+    </section>
+
+    <section id="section-ready">
+        <div class="content">
+            <h2 class="hb-text">Happy Birthday!</h2>
+            <p style="margin-bottom:20px;">Are you ready for your surprise?</p>
+            <div id="ready-btns">
+                <button class="btn-pink" onclick="nextSection('section-grid')">Yes</button>
+                <button class="btn-pink" onclick="nextSection('section-not-satisfied')">No</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-not-satisfied">
+        <div class="content">
+            <h2 class="hb-text">How Rude! 😤</h2>
+            <p style="margin-bottom:20px;">I'm not satisfied! Click again 😁😁.</p>
+            <div style="display:flex; justify-content:center;">
+                <button class="btn-pink1" onclick="nextSection('section-grid')">Yes</button>
+                <button class="btn-pink" onclick="nextSection('section-grid')">Yes</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-grid">
+        <div class="content">
+            <h1 class="section-title">Some Memories...<br>(Click them)</h1>
+            <div class="grid-container">
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="WhatsApp Image 2026-05-13 at 8.50.03 PM.jpeg"></div>
+                        <div class="card-back"><p style="font-size:8px;">bht kuch kharaab tha lekin sb kuch nahi
+                            ye hamara sbse pyara photo hain mei chahungi hamari shadi mei no hamare waleeme waledin
+                             jahan hum baithenge uske peeche ye photo hona  chahiye or bada bada likha hona
+                            chahiyeee u are only mineeeee.loveee u sooo muchhhh yr😭😭
+                    
+                        </p></div>
+                    </div>
+                </div>
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="WhatsApp Image 2026-05-13 at 8.44.22 PM (1).jpeg"></div>
+                        <div class="card-back"><p style="font-size:8px;">you remember this photo of mineee haaan kitna khush
+                             thi mei like a choti bachi wo ghr ko yaad krna phr 
+                             tumhara naraz hona phr meine ghr ko yaad nhi kri not
+                              bcz tmne gussa kre bcz of tumne ghr ki yaad hi nhi
+                              aane di bht bachpana dikhaya hain meine undeeno tmko
+                               chate to daat skte but u give me onlyyy love ✨</p></div>
+                    </div>
+                </div>
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="WhatsApp Image 2026-05-13 at 8.44.22 PM.jpeg"></div>
+                        <div class="card-back"><p>ye mei don bn rhi thi tumhare samne wese hmesha hi bntiii 
+                            hu mei hu don okei drooo mujhse bht pyr kro mujhko🌸</p></div>
+                    </div>
+                </div>
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="IMG20240927220956.jpg"></div>
+                        <div class="card-back"><p style="font-size:8px;">hahahaha dikh rhi hun side mei kese mobile chl 
+                            rhi hun us din aesa ho rha tum khi na jao jb bhiinkpdho ko dekhti
+                            hun wo din yaad ajata hain ❤️</p></div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-pink next-btn" onclick="nextSection('section-quiz1')">Next ➡️</button>
+        </div>
+    </section>
+
+    <section id="section-quiz1">
+        <div class="content">
+            <h3>Ummm now tell me when did i realize i like you?</h3>
+            <div class="options">
+                <button onclick="wrongAns(this)">From our first conversation</button>
+                <button onclick="wrongAns('section-note')">When u give me soooo much attension</button>
+                <button onclick="wrongAns(this)">When you always saw and replied
+                    to my msg instantly😭
+                </button>
+                <button onclick="rightAns('section-note')">while talking late at night</button>
+            </div>
+            <p id="quiz1-msg" class="msg-box"></p>
+        </div>
+    </section>
+
+    <section id="section-note">
+        <div class="content">
+            <div class="note-paper">
+                <p style="font-size:8px; color:#ff4081;">So today is your birthday, and I’m still upset with you because you refused to take the gift. I hate youu 😭 but I still had to give it because I made it with so much effort.
+You are really very sweet. You make every single day special for me. Sometimes you become annoying too hahaha, but it’s okay… if not with me, then who will you fight with?hehhehe
+And one more thing — I don’t like it when you talk about other girls, okeiiiii So please don’t do that.wrna mei rodungiiiii
+And stay happy always. and one more thing Why are you so scared of losing things? The more you hold onto things with fear, the more they break and go far away.drna haina to mujhse droo...
+okei sooo on this birthday iam sending you sooo much love. I don’t know how you’re feeling right now, but I hope this little surprise made you happy. Just remember this — the more scared you are, the faster things fall apart, okei….
+I’ll always stay. I’m not going anywhere, and you know that too. That’s why I have the most rights over you 😌❤️
+I loveee you sooo much. I miss you. Come back to me quickly so I can shower you with lots of love and say “Happy Birthday jaan ji” with a kiss 💕
+
+                </p>
+                <p>happy birthday</p>
+            </div>
+            <button class="btn-gold" style="margin-top:20px;" onclick="nextSection('section-quiz2')">Next ➡️</button>
+        </div>
+    </section>
+
+    <section id="section-quiz2">
+        <div class="content">
+            <h3>Question from my note 😉</h3>
+            <p> 
+What did I say about being too scared of losing things? 🥺
+</p>
+            <div class="options">
+                <button onclick="wrongAnsQuiz2()">Fear makes things stronger</button>
+                <button onclick="rightAnsQuiz2(this)"> The more you fear, the more things break and go far away
+</button>
+                <button onclick="wrongAnsQuiz2()">Fear doesn’t matter in relationships</button>
+            </div>
+            <p id="quiz2-msg" class="msg-box"></p>
+            <button id="gift-btn" class="btn-gold hidden" onclick="nextSection('section-video')">Last Special Gift 🎁</button>
+        </div>
+    </section>
+    <section id="section-video">
+        <div class="content">
+            <h1 class="hb-text" style="font-size:1.5rem;">Us together is the best memory I have with you❤️</h1>
+            <div class="video-wrapper">
+                <video controls>
+                    <source src="WhatsApp Video 2026-05-13 at 8.44.30 PM.mp4" type="video/mp4">
+                </video>
+            </div>
+            <button class="btn-gold" onclick="nextSection('section-final')">Finish 🏁</button>
+        </div>
+    </section>
+
+<section id="section-final">
+    <div class="final-container">
+        <div class="final-photo" style="background-image: url('as_.jpeg');"></div>
+        
+        <div class="text-overlay">
+            <h1 class="final-text title-font">You are the best Jaaan jiiiii❤️</h1>
+            <p class="final-subtext">Forever and always 🎂</p>
+        </div>
+    </div>
+</section>
+
+    <script src="script.js"></script>
+</body>
+</html>
